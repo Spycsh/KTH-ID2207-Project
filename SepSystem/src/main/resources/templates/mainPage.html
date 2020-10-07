@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo 2</title>
+
+  <link rel="stylesheet" href="../css/preset.css">
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+  </script>
+  <style>
+
+
+
+  </style>
+
+</head>
+
+<body>
+  <header>HEADER</header>
+  <script>
+
+
+
+  </script>
+
+  <div class="content">
+    <div class="sidebar">
+      <ul class="side-menu">
+        <!-- class="hidden" -->
+        <li th:class="${event}"><a href="eventManagement.html">EventManagement</a></li>
+
+        <li th:class="${task}"><a href="#">TaskManagement</a></li>
+
+        <li th:class="${staff}"><a href="#">StaffManagement</a></li>
+
+        <li th:class="${finance}"><a href="#">FinanceManagement</a></li>
+
+      </ul>
+
+    </div>
+    <div class="maincontent">
+        <h1>This is the main content</h1>
+      
+    </div>
+  </div>
+
+  <footer>FOOTER</footer>
+</body>
+
+</html>

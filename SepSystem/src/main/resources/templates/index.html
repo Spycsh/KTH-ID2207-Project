@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<!-- login page -->
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>login</title>
+</head>
+
+<body>
+<div id="main">
+    <form action="/login" method="POST">
+        <h2>Login</h2><br> <i class="fa fa-user"></i> User Name: <input type="text"
+                                                                        class="inputBox" name="userName" size="20" maxlength="15"
+                                                                        placeholder="Please enter your username" required> <br>
+
+        <i class="fa fa-key"></i> Password: <input type="password" class="inputBox"
+                                                   name="password" size="20" maxlength="15"
+                                                   placeholder="Please enter your password" required> <br>
+        <input type="submit" value="Login"> <input type="button"
+                                                   onclick="window.location.href='register.html'" value="register">
+
+    </form>
+</div>
+
+</body>
+
+
+</html>
+
