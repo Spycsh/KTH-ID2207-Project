@@ -9,8 +9,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Event {
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Id
+@GeneratedValue(strategy= GenerationType.IDENTITY)
+@Id
 private int id;
 private int clientId;
 private String clientName;

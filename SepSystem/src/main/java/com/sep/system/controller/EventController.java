@@ -1,6 +1,6 @@
 package com.sep.system.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import com.sep.system.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 
 
 @Controller
