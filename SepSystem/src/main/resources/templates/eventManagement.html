@@ -133,70 +133,14 @@
                         </tr>
                     </thead>
          
-                    <tbody>
-                        <tr>
-                            <td>1-001</td>
-                            <td>0-001</td>
-                            <td>150000</td>
-                            <td>Pending</td>
-                            <td><a href>More</a></td>
-                        </tr>
-                        <tr>
-                            <td>1-001</td>
-                            <td>0-001</td>
-                            <td>150000</td>
-                            <td>Pending</td>
-                            <td><a href>More</a></td>
-                        </tr>
-                        <tr>
-                            <td>1-001</td>
-                            <td>0-001</td>
-                            <td>150000</td>
-                            <td>Pending</td>
-                            <td><a href>More</a></td>
-                        </tr>
-                        <tr>
-                            <td>1-001</td>
-                            <td>0-001</td>
-                            <td>150000</td>
-                            <td>Pending</td>
-                            <td><a href>More</a></td>
-                        </tr>
-                        <tr>
-                            <td>1-001</td>
-                            <td>0-001</td>
-                            <td>150000</td>
-                            <td>Pending</td>
-                            <td><a href>More</a></td>
-                        </tr>
-                        <tr>
-                            <td>1-001</td>
-                            <td>0-001</td>
-                            <td>150000</td>
-                            <td>Pending</td>
-                            <td><a href>More</a></td>
-                        </tr>
-                        <tr>
-                            <td>1-001</td>
-                            <td>0-001</td>
-                            <td>150000</td>
-                            <td>Pending</td>
-                            <td><a href>More</a></td>
-                        </tr>
-                        <tr>
-                            <td>1-001</td>
-                            <td>0-001</td>
-                            <td>150000</td>
-                            <td>Pending</td>
-                            <td><a href>More</a></td>
-                        </tr>
-                        <tr>
-                            <td>1-001</td>
-                            <td>0-001</td>
-                            <td>150000</td>
-                            <td>Pending</td>
-                            <td><a href>More</a></td>
-                        </tr>
+                    <tr th:each="event : ${eventlist}">
+                        <td th:text="${event.id}">null</td>
+                        <td th:text="${event.clientId}">null</td>
+                        <td th:text="${event.expectedBudget}">null</td>
+                        <td th:text="${event.status}">null</td>
+                        <td><a href>button</a></td>
+                    </tr>
+
 
                     </tbody>
          
