@@ -15,8 +15,8 @@ private int id;
 private int clientId;
 private String clientName;
 private String eventType;
-private Date  beginDate;
-private Date endDate;
+private String  beginDate;
+private String endDate;
 private String perferences;
 private int expectedBudget;
 private String status;
@@ -24,35 +24,20 @@ private String comment;
 
 
 public Event(){
-    this.id = 1;
-    this.clientId = 1;
-    this.clientName = "sb";
-    this.eventType = "sb";
-    this.beginDate = new Date();
-    this.endDate = new Date();
-    this.perferences = "sb";
-    this.expectedBudget = 123;
-    this.status = "sv";
-    this.comment = "sb";
-
 }
 
 
-// Event(String recordNumber,String clientId,String clientName,String eventType,Date beginDate,Date endDate,
-// String perferences,int expectedBudget,String status,String comment){
-//     this.id = recordNumber;
-//     this.clientId = clientId;
-//     this.clientName = clientName;
-//     this.eventType = eventType;
-//     this.beginDate = beginDate;
-//     this.endDate = endDate;
-//     this.perferences = perferences;
-//     this.expectedBudget = expectedBudget;
-//     this.status = status;
-//     this.comment = comment;
-
-
-// }
+public Event(String clientName,String eventType,String beginDate,String endDate,
+String perferences,int expectedBudget){
+    this.clientId = 0;
+    this.clientName = clientName;
+    this.eventType = eventType;
+    this.beginDate = beginDate;
+    this.endDate = endDate;
+    this.perferences = perferences;
+    this.expectedBudget = expectedBudget;
+    this.status = "draft";
+}
 
 public int getId() {
     return id;
@@ -86,19 +71,19 @@ public void setEventType(String eventType) {
     this.eventType = eventType;
 }
 
-public Date getBeginDate() {
+public String getBeginDate() {
     return beginDate;
 }
 
-public void setBeginDate(Date beginDate) {
+public void setBeginDate(String beginDate) {
     this.beginDate = beginDate;
 }
 
-public Date getEndDate() {
+public String getEndDate() {
     return endDate;
 }
 
-public void setEndDate(Date endDate) {
+public void setEndDate(String endDate) {
     this.endDate = endDate;
 }
 
@@ -132,6 +117,13 @@ public String getComment() {
 
 public void setComment(String comment) {
     this.comment = comment;
+}
+
+@Override
+public String toString() {
+    return "Event [beginDate=" + beginDate + ", clientId=" + clientId + ", clientName=" + clientName + ", comment="
+            + comment + ", endDate=" + endDate + ", eventType=" + eventType + ", expectedBudget=" + expectedBudget
+            + ", id=" + id + ", perferences=" + perferences + ", status=" + status + "]";
 }
 
 

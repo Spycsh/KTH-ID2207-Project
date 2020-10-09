@@ -31,8 +31,8 @@
     <div class="sidebar">
       <ul class="side-menu">
         <!-- class="hidden" -->
+        <!-- <li th:class="${event}"><a href="eventManagement.html">EventManagement</a></li> -->
         <li th:class="${event}"><a href="/eventManagement">EventManagement</a></li>
-
         <li th:class="${task}"><a href="#">TaskManagement</a></li>
 
         <li th:class="${staff}"><a href="#">StaffManagement</a></li>
@@ -43,7 +43,23 @@
 
     </div>
     <div class="maincontent">
-      aaa
+        
+
+        <form th:action="@{/createEventRequest}" method = "POST">
+            
+            <p>Client Name: <input name="clientName" type="text" placeholder="client name"></p>
+            <p>Event type: <input name="eventType" type="text" placeholder="event type"></p>
+            <p>Begin Date: <input name="beginDate" type="date" ></p>
+            <p>End Date: <input name="endDate" type="date" ></p>
+            <p>Perferences: <input name="perferences" type="text" placeholder="perferences"></p>
+            <p>Expected budget: <input name="expectedBudget" type="number" placeholder="budget"></p>
+           
+            <button type="submit">submit</button>
+        
+            </form> 
+
+
+
     </div>
   </div>
 

@@ -13,10 +13,10 @@ public class EntryController {
     @RequestMapping("/")
     public String html(){return "index";}
 
-    @RequestMapping("/success")
+    @RequestMapping("/loginFailure")
     public String success(Map<String, Object> map){
-        map.put("hello", "你好");
+        map.put("hello", "The login fails: please check the password");
 
-        return "success";
+        return "loginFailure";
     }
 }

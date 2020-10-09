@@ -13,7 +13,9 @@
     </script>
     <style>
 
-        
+        #createButton{
+            float:left;
+        }
 
 .table-box {
             margin: 100px auto;
@@ -107,7 +109,7 @@
         <div class="sidebar">
             <ul class="side-menu">
                 <!-- class="hidden" -->
-                <li th:class="${event}"><a href="eventManagement.html">EventManagement</a></li>
+                <li th:class="${event}"><a href="/eventManagement">EventManagement</a></li>
 
                 <li th:class="${task}"><a href="#">TaskManagement</a></li>
 
@@ -121,8 +123,10 @@
         <div class="maincontent">
             <!-- <div style="width:800px;height:100px;overflow-y:scroll;overflow-x:none;background-color: rgba(0,0,0,0.1);"> -->
                 <table cellpadding="0" cellspacing="0">
-                    <caption>Event List</caption>
-                    
+                    <div>
+                    <a href="/createEvent" id="createButton">create</a>
+                    <caption>Event List </caption>
+                    </div>
                     <thead>
                         <tr>
                             <th>Event ID</th>

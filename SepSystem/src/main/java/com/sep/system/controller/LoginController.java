@@ -40,10 +40,10 @@ public class LoginController {
                 // setsession
                 session.setAttribute("userName", userName);
                 session.setAttribute("event", "event");
-                return "redirect:mainpage";
+                return "redirect:mainPage";
             }else{
 
-                return "redirect:success";
+                return "redirect:loginFailure";
 
             }
 
