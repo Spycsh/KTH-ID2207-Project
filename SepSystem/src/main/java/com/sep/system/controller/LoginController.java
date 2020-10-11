@@ -39,6 +39,8 @@ public class LoginController {
 
                 // setsession
                 session.setAttribute("userName", userName);
+                session.setAttribute("role", em.get(0).getRole());
+                session.setAttribute("role", em.get(0).getRole());
                 session.setAttribute("event", "event");
                 return "redirect:mainPage";
             }else{

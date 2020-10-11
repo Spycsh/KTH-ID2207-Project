@@ -12,12 +12,24 @@
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
     </script>
     <style>
+        /* #tablecaption{
+            text
+        } */
 
         #createButton{
+            margin-top: 2px;
+            text-decoration: none;
+            font-size: 20px;
+            width: 80px;
+            line-height: 40px;
+            border-top:3px solid  rgba(43, 124, 216, 0.3);
+            border-right:3px solid  rgba(43, 124, 216,0.5);
+            border-bottom: 3px solid  rgba(43, 124, 216,0.75);
+            border-left:3px solid  rgba(43, 124, 216,1);
             float:left;
         }
 
-.table-box {
+        .table-box {
             margin: 100px auto;
             width: 1024px;
         }
@@ -123,14 +135,14 @@
         <div class="maincontent">
             <!-- <div style="width:800px;height:100px;overflow-y:scroll;overflow-x:none;background-color: rgba(0,0,0,0.1);"> -->
                 <table cellpadding="0" cellspacing="0">
-                    <div>
-                    <a href="/createEvent" id="createButton">create</a>
-                    <caption>Event List </caption>
-                    </div>
+
+
+                    <caption id="tablecaption"><a href="/createEvent" id="createButton">create</a>Event List </caption>
+
                     <thead>
                         <tr>
                             <th>Event ID</th>
-                            <th>Client ID</th>
+                            <th>Event Type</th>
                             <th>Event Price</th>
                             <th>Event Status</th>
                             <th>Event Details</th>
@@ -138,21 +150,24 @@
                     </thead>
          
                     <tr th:each="event : ${eventlist}">
-                        <td th:text="${event.id}">null</td>
-                        <td th:text="${event.clientId}">null</td>
+                        <td th:text="${event.id}" name="">null</td>
+                        <td th:text="${event.eventType}">null</td>
                         <td th:text="${event.expectedBudget}">null</td>
                         <td th:text="${event.status}">null</td>
-                        <td><a href>button</a></td>
+
+
+                        <td>
+                            <form th:action="@{/editEvent}" method="post">
+                                <input name="eventId" type="hidden" th:value="${event.id}">
+                                <button type="submit">Edit</button>
+                            </form>
+                        </td>
                     </tr>
 
 
                     </tbody>
          
-                    <tfoot>
-                        <tr>
-                            <td colspan="5">【table，thead，tbody，tfoot】 colspan：合并行， rowspan：合并列 </td>
-                        </tr>
-                    </tfoot>
+
                 </table>
         
               <!-- </div> -->

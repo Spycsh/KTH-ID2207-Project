@@ -9,122 +9,143 @@ import javax.persistence.Id;
 
 @Entity
 public class Event {
-@GeneratedValue(strategy= GenerationType.IDENTITY)
-@Id
-private int id;
-private int clientId;
-private String clientName;
-private String eventType;
-private String  beginDate;
-private String endDate;
-private String perferences;
-private int expectedBudget;
-private String status;
-private String comment;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private int id;
+    private int clientId;
+    private String clientName;
+    private String eventType;
+    private String beginDate;
+    private String endDate;
+    private String preferences;
+    private int expectedBudget;
+    private String status;
+    private String comment;
+    private String description;
 
 
-public Event(){
-}
+    public Event() {
+    }
 
 
-public Event(String clientName,String eventType,String beginDate,String endDate,
-String perferences,int expectedBudget){
-    this.clientId = 0;
-    this.clientName = clientName;
-    this.eventType = eventType;
-    this.beginDate = beginDate;
-    this.endDate = endDate;
-    this.perferences = perferences;
-    this.expectedBudget = expectedBudget;
-    this.status = "draft";
-}
+    public Event(String clientName, String eventType, String beginDate, String endDate,
+                 String preferences, int expectedBudget, String description) {
+        this.clientId = 0;
+        this.clientName = clientName;
+        this.eventType = eventType;
+        this.beginDate = beginDate;
+        this.endDate = endDate;
+        this.preferences = preferences;
+        this.expectedBudget = expectedBudget;
+        this.status = "draft";
+        this.description = description;
+    }
 
-public int getId() {
-    return id;
-}
+    public int getId() {
+        return id;
+    }
 
-public void setId(int id) {
-    this.id = id;
-}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-public int getClientId() {
-    return clientId;
-}
+    public int getClientId() {
+        return clientId;
+    }
 
-public void setClientId(int clientId) {
-    this.clientId = clientId;
-}
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
 
-public String getClientName() {
-    return clientName;
-}
+    public String getClientName() {
+        return clientName;
+    }
 
-public void setClientName(String clientName) {
-    this.clientName = clientName;
-}
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
 
-public String getEventType() {
-    return eventType;
-}
+    public String getEventType() {
+        return eventType;
+    }
 
-public void setEventType(String eventType) {
-    this.eventType = eventType;
-}
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
 
-public String getBeginDate() {
-    return beginDate;
-}
+    public String getBeginDate() {
+        return beginDate;
+    }
 
-public void setBeginDate(String beginDate) {
-    this.beginDate = beginDate;
-}
+    public void setBeginDate(String beginDate) {
+        this.beginDate = beginDate;
+    }
 
-public String getEndDate() {
-    return endDate;
-}
+    public String getEndDate() {
+        return endDate;
+    }
 
-public void setEndDate(String endDate) {
-    this.endDate = endDate;
-}
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
 
-public String getPerferences() {
-    return perferences;
-}
+    public String getPreferences() {
+        return preferences;
+    }
 
-public void setPerferences(String perferences) {
-    this.perferences = perferences;
-}
+    public void setPreferences(String preferences) {
+        this.preferences = preferences;
+    }
 
-public int getExpectedBudget() {
-    return expectedBudget;
-}
+    public int getExpectedBudget() {
+        return expectedBudget;
+    }
 
-public void setExpectedBudget(int expectedBudget) {
-    this.expectedBudget = expectedBudget;
-}
+    public void setExpectedBudget(int expectedBudget) {
+        this.expectedBudget = expectedBudget;
+    }
 
-public String getStatus() {
-    return status;
-}
+    public String getStatus() {
+        return status;
+    }
 
-public void setStatus(String status) {
-    this.status = status;
-}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-public String getComment() {
-    return comment;
-}
+    public String getComment() {
+        return comment;
+    }
 
-public void setComment(String comment) {
-    this.comment = comment;
-}
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-@Override
-public String toString() {
-    return "Event [beginDate=" + beginDate + ", clientId=" + clientId + ", clientName=" + clientName + ", comment="
-            + comment + ", endDate=" + endDate + ", eventType=" + eventType + ", expectedBudget=" + expectedBudget
-            + ", id=" + id + ", perferences=" + perferences + ", status=" + status + "]";
-}
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", clientId=" + clientId +
+                ", clientName='" + clientName + '\'' +
+                ", eventType='" + eventType + '\'' +
+                ", beginDate='" + beginDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", preferences='" + preferences + '\'' +
+                ", expectedBudget=" + expectedBudget +
+                ", status='" + status + '\'' +
+                ", comment='" + comment + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 
 
 
