@@ -13,7 +13,16 @@
   </script>
   <style>
 
+    .disabled{
+      color: rgb(84, 84, 84);
+      cursor: default;
+      background-color: rgb(235, 235, 228);
+      pointer-events:none;
+    }
 
+    .hidden{
+      display: none;
+    }
 
   </style>
 
@@ -45,29 +54,32 @@
 
     <div class="maincontent">
       <form th:action="@{/editEventRequest}" method = "POST">
-        <p>Event Id: <input name="eventId" type="text" th:value="${event.id}"></p>
-        <p>Client Name: <input name="clientName" disabled type="text" placeholder="client name" th:value="${event.clientName}"></p>
-        <p>Event type: <input name="eventType" type="text" disabled placeholder="event type" th:value="${event.eventType}"></p>
-        <p>Begin Date: <input name="beginDate" type="date" disabled value="${event.beginDate}"></p>
-        <p>End Date: <input name="endDate" type="date" disabled value="${event.endDate}"></p>
-        <p>Preferences: <input name="preferences" disabled type="text" th:value="${event.preferences}"></p>
+        <p>Event Id: <input name="eventId" type="text" class="disabled" th:value="${event.id}"></p>
+        <p>Client Name: <input name="clientName" class="disabled" type="text" placeholder="client name" th:value="${event.clientName}"></p>
+        <p>Event type: <input name="eventType" type="text" class="disabled" placeholder="event type" th:value="${event.eventType}"></p>
+        <p>Begin Date: <input name="beginDate" type="date" class="disabled" th:value="${event.beginDate}"></p>
+        <p>End Date: <input name="endDate" type="date" class="disabled" th:value="${event.endDate}"></p>
+        <p>Preferences: <input name="preferences" class="disabled" type="text" th:value="${event.preferences}"></p>
         <div id="commentDiv">
           <label>Description </label>
-          <textarea rows="10" cols="30" name="description" disabled id="description" th:value="${event.description}"></textarea>
+          <textarea rows="10" cols="30" name="description" class="disabled" id="description" th:value="${event.description}"></textarea>
           <br>
         </div>
 
-        <p>Status: <input name="status" disabled type="text" placeholder="draft" th:value="${event.status}"></p>
+        <p>Status: <input name="status" class="disabled" type="text" placeholder="draft" th:value="${event.status}"></p>
+        <p>Expected budget: <input name="expectedBudget" class="disabled" type="number" placeholder="budget" th:value="${event.expectedBudget}"></p>
 
-        <p>Comment: <input name="comment" type="text" placeholder="comment" th:value="${event.comment}"></p>
-        <p>Expected budget: <input name="expectedBudget" type="number" placeholder="budget" th:value="${event.expectedBudget}"></p>
+        <p>Comment: <input name="comment" class="disabled" th:class="${session.budgetCommentView}" type="text" placeholder="comment" th:value="${event.comment}"></p>
 
+        <div class="disabled" th:class="${session.choiceView}">
+          <p>Please approve or reject:</p>
+          <input type="radio" id="approve" name="choice" checked value="approve">
+          <label for="approve">approve</label>
+          <input type="radio" id="reject" name="choice" value="reject">
+          <!--        if the role equals to financial manager, then replace the disabled with undisabled-->
+          <label for="reject">reject</label><br><br>
+        </div>
 
-        <p>Please approve or reject:</p>
-        <input type="radio" id="approve" name="choice" value="approve">
-        <label for="approve">approve</label>
-        <input type="radio" id="reject" name="choice" value="reject">
-        <label for="reject">reject</label><br><br>
 
         <button type="submit">submit</button>
 
