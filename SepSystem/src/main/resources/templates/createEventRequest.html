@@ -20,7 +20,13 @@
 </head>
 
 <body>
-  <header>HEADER</header>
+  <header>
+    
+    <div id = "header">
+      <p th:text="${session.userName}"></p>
+     <p th:text="${session.role}"></p>
+   </div>
+  </header>
   <script>
 
 
@@ -30,14 +36,14 @@
   <div class="content">
     <div class="sidebar">
       <ul class="side-menu">
-        <!-- class="hidden" -->
-        <!-- <li th:class="${event}"><a href="eventManagement.html">EventManagement</a></li> -->
-        <li th:class="${event}"><a href="/eventManagement">EventManagement</a></li>
-        <li th:class="${task}"><a href="#">TaskManagement</a></li>
+        
+        <li class="hidden" th:class="${session.event}"><a href="/eventManagement">EventManagement</a></li>
 
-        <li th:class="${staff}"><a href="#">StaffManagement</a></li>
+        <li class="hidden" th:class="${session.task}"><a href="/taskManagement">TaskManagement</a></li>
 
-        <li th:class="${finance}"><a href="#">FinanceManagement</a></li>
+        <li class="hidden" th:class="${session.staff}"><a href="/staffManagement">StaffManagement</a></li>
+
+        <li class="hidden" th:class="${session.finance}"><a href="/financeManagement">FinanceManagement</a></li>
 
       </ul>
 

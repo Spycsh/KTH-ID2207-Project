@@ -1,7 +1,6 @@
 package com.sep.system.model;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,25 +17,28 @@ private int id;
 private String name;
 private String password;
 private String role;
+private String department;
 
+//necessary for jpa repository
 public Employee(){
     
 }
 
-public Employee(int id, String name, String password, String role){
+public Employee(int id, String name, String password, String role,String department){
     this.id = id;
     this.name = name;
     this.role = role;
     this.password = password;
-
+    this.department = department;
 }
 
 
-public Employee( String name, String role, String password){
+public Employee( String name, String role, String password,String department){
     
     this.name = name;
     this.role = role;
     this.password = password;
+    this.department = department;
 
 }
 
@@ -72,6 +74,14 @@ public String getPassword() {
 
 public void setPassword(String password) {
     this.password = password;
+}
+
+public String getDepartment() {
+    return department;
+}
+
+public void setDepartment(String department) {
+    this.department = department;
 }
 
 }

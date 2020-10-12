@@ -13,23 +13,49 @@ public class Task {
 private int id;
 private int eventId;
 private int employeeId;
+private String employeeName;
 private String subject;
 private String description;
 private int senderId;
+private String department;
 private String priority;
 private String plan;
 private String comment;
 private String status;
 
-public Task(int id, int eventId, int employeeId, String subject, String description, int sender, String priority, String status) {
+public Task(){
+
+    
+}
+
+public Task(int id, int eventId, int employeeId,String employeeName, String subject, 
+String description, int sender, String department, String priority, 
+String status,String plan,String comment) {
     this.id = id;
     this.eventId = eventId;
     this.employeeId = employeeId;
+    this.employeeName = employeeName;
+    this.department = department;
     this.subject = subject;
     this.description = description;
     this.senderId = sender;
     this.priority = priority;
     this.status = status;
+    this.plan = plan;
+    this.comment = comment;
+}
+
+public Task(int eventId, int employeeId, String subject, 
+String description, int sender, String department, String priority, String status,String employeeName) {
+    this.eventId = eventId;
+    this.employeeId = employeeId;
+    this.department = department;
+    this.subject = subject;
+    this.description = description;
+    this.senderId = sender;
+    this.priority = priority;
+    this.status = status;
+    this.employeeName  = employeeName;
 }
 
 public int getId() {
@@ -110,6 +136,22 @@ public String getStatus() {
 
 public void setStatus(String status) {
     this.status = status;
+}
+
+public String getDepartment() {
+    return department;
+}
+
+public void setDepartment(String department) {
+    this.department = department;
+}
+
+public String getEmployeeName() {
+    return employeeName;
+}
+
+public void setEmployeeName(String employeeName) {
+    this.employeeName = employeeName;
 }
 
 

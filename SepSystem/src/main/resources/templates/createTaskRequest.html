@@ -21,10 +21,11 @@
 
 <body>
   <header>
+    
     <div id = "header">
-       <p th:text="${session.userName}"></p>
-      <p th:text="${session.role}"></p>
-    </div>
+      <p th:text="${session.userName}"></p>
+     <p th:text="${session.role}"></p>
+   </div>
   </header>
   <script>
 
@@ -48,8 +49,34 @@
 
     </div>
     <div class="maincontent">
-        <h1>This is the main content</h1>
-      
+     
+        <form th:action="@{/createTaskRequest}" method = "POST">
+            
+            <p>Event id: <input name="eventId" type="text" placeholder="event id"></p>
+            <p>Receiver employee: 
+
+              <select name = "employeeId">
+                <option th:each="employee : ${employeelist}" th:value = "${employee.id}" th:text="${employee.name}">null</option>
+              </select>
+
+              <!-- <input name="employeeId" type="text" placeholder="employee id"> -->
+            </p>
+            <p>Subject: <input name="subject" type="text" ></p>
+            <p>Description: <input name="description" type="text" ></p>
+            <p>Priority: 
+              <select name = "priority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+              </select>
+            </p>
+           
+            <button type="submit">submit</button>
+        
+            </form> 
+
+
+
     </div>
   </div>
 

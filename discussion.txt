@@ -1,0 +1,5 @@
+how to change status of the event
+senior officer can change to pass/reject(not other state)
+admin manager can change to approved
+
+perference,comment-metaphor

@@ -29,14 +29,7 @@ public class EventController {
     @RequestMapping("/eventManagement")
     public String eventManagement(Map<String, Object> map) {
         List<Event> eventList = eventRepository.findAll();
-        System.out.println(eventList);
-        // for(int i=0;i<9;i++)
-        // {
-
-        //     eventList.add(new Event());
-
-        // }
-
+//        System.out.println(eventList);
         map.put("eventlist", eventList);
         return "eventManagement";
     }
@@ -44,7 +37,7 @@ public class EventController {
 
     @PostMapping(value = "/editEvent")
     public String editEvent(HttpServletRequest request ,@RequestParam("eventId") String eventId, Map<String, Object> map){
-//        List<Event> event = eventRepository.findById(eventId);
+
         System.out.println(eventId);
 
         Event event = eventRepository.findById(parseInt(eventId)).get();
