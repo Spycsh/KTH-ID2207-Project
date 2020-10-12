@@ -68,7 +68,7 @@
         <p>Preferences: <input name="preferences" class="disabled" type="text" th:value="${event.preferences}"></p>
         <div id="commentDiv">
           <label>Description </label>
-          <textarea rows="10" cols="30" name="description" class="disabled" id="description" th:value="${event.description}"></textarea>
+          <textarea rows="10" cols="30" name="description" class="disabled" id="description" th:field="*{event.description}"></textarea>
           <br>
         </div>
 

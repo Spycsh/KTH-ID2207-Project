@@ -1,0 +1,4 @@
+Draft=>Edited=>Checked
+
+Edited: namely team member commented
+Checked: leader know the task comment from the member and is going to request finance or resources

@@ -33,6 +33,13 @@
             float:left;
         }
 
+        #createButton:hover{
+            border-bottom:3px solid  rgba(43, 124, 216, 0.3);
+            border-left:3px solid  rgba(43, 124, 216,0.5);
+            border-top: 3px solid  rgba(43, 124, 216,0.75);
+            border-right:3px solid  rgba(43, 124, 216,1);
+        }
+
         .table-box {
             margin: 100px auto;
             width: 1024px;
@@ -166,7 +173,7 @@
                     <tr th:each="task : ${tasklist}">
                         <td th:text="${task.id}" name="">null</td>
                         <td th:text="${task.eventId}">null</td>
-                        <td th:text="${task.employeeId}">null</td>
+                        <td th:text="${task.employeeName}">null</td>
                         <td th:text="${task.department}">null</td>
                         <td th:text="${task.priority}">null</td>
                         <td th:text="${task.subject}">null</td>
@@ -174,7 +181,7 @@
                         <td>
                             <form th:action="@{/editTask}" method="post">
                                 <input name="taskId" type="hidden" th:value="${task.id}">
-                                <button type="submit">Edit</button>
+                                <button type="submit">More</button>
                             </form>
                         </td>
                     </tr>
