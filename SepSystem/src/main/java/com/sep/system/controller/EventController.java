@@ -1,10 +1,8 @@
 package com.sep.system.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import com.sep.system.model.Event;
 
@@ -27,10 +25,20 @@ public class EventController {
     private EventRepository eventRepository;
 
     @RequestMapping("/eventManagement")
-    public String eventManagement(Map<String, Object> map) {
+    public String eventManagement(HttpServletRequest request, Map<String, Object> map) {
         List<Event> eventList = eventRepository.findAll();
 //        System.out.println(eventList);
         map.put("eventlist", eventList);
+
+        HttpSession session = request.getSession();
+        // get current role
+        String role = (String) session.getAttribute("role");
+        if(role.equals("customer service officer")){
+            map.put("createView", "createView");
+        }else{
+            map.put("createView", "hidden");
+        }
+
         return "eventManagement";
     }
 

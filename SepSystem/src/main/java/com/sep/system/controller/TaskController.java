@@ -65,7 +65,7 @@ public class TaskController {
 
 
     @PostMapping(value = "/createTaskRequest")
-    public String createEvent( @RequestParam("eventId") int eventId, @RequestParam("employeeId") int employeeId,
+    public String createTask( @RequestParam("eventId") int eventId, @RequestParam("employeeId") int employeeId,
                               @RequestParam("subject") String subject, @RequestParam("description") String description,
                               @RequestParam("priority") String priority,
                               Map<String, Object> map,HttpServletRequest request) {

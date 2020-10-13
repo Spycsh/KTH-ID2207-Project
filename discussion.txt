@@ -3,3 +3,8 @@ senior officer can change to pass/reject(not other state)
 admin manager can change to approved
 
 perference,comment-metaphor
+
+todo:
+only customer officer can create a event, namely sam
+ok
+

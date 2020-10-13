@@ -52,8 +52,19 @@ public class LoginController {
                 session.setAttribute("role", em.get(0).getRole());
                 session.setAttribute("userId",em.get(0).getId());
                 session.setAttribute("department",em.get(0).getDepartment());
-                
 
+                // event management is only visible to customer service officer/ senior customer service manager/
+                // financial manager/ admin manager
+                if(em.get(0).getRole().equals("financial manager") | em.get(0).getRole().equals("admin manager")
+                        | em.get(0).getRole().equals("senior customer service manager")
+                        | em.get(0).getRole().equals("customer service officer")){
+                    session.setAttribute("event", "event");
+
+                }else{
+                    session.setAttribute("event","hidden");
+                }
+
+                // task management is only visible to production and service department managers and staff
                 if(em.get(0).getDepartment().equals("production") | em.get(0).getDepartment().equals("service")){
 
                     session.setAttribute("task", "task");
@@ -61,7 +72,26 @@ public class LoginController {
                 }else{
                     session.setAttribute("task","hidden");
                 }
-                session.setAttribute("event", "event");
+
+                // staff management is only visible to HR manager/ production manager/ service manager
+                if(em.get(0).getRole().equals("HR manager") |em.get(0).getRole().equals("production manager")
+                        | em.get(0).getRole().equals("service manager")){
+
+                    session.setAttribute("staff", "staff");
+
+                }else{
+                    session.setAttribute("staff","hidden");
+                }
+
+                // Financial management is only visible to Financial manager/ production manager/ financial manager
+                if(em.get(0).getRole().equals("financial manager") | em.get(0).getRole().equals("production manager")
+                        | em.get(0).getRole().equals("service manager")){
+                    session.setAttribute("finance", "finance");
+
+                }else{
+                    session.setAttribute("finance","hidden");
+                }
+
                 return "redirect:mainPage";
             }else{
 

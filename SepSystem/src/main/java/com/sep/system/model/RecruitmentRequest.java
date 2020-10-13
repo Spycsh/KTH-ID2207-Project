@@ -84,7 +84,7 @@ public class RecruitmentRequest {
     }
 
     public RecruitmentRequest(int id, String requestingDept, String contractType, String yearOfExperience,
-            String jobTitle, String description, String status, String commentFromHR) {
+            String jobTitle, String description, String status) {
         this.id = id;
         this.requestingDept = requestingDept;
         this.contractType = contractType;
@@ -92,16 +92,17 @@ public class RecruitmentRequest {
         this.jobTitle = jobTitle;
         this.description = description;
         this.status = status;
-        this.commentFromHR = commentFromHR;
+//        this.commentFromHR = commentFromHR;
     }
 
     public RecruitmentRequest(String requestingDept, String contractType, String yearOfExperience, String jobTitle,
-            String description) {
+            String description, String status) {
         this.requestingDept = requestingDept;
         this.contractType = contractType;
         this.yearOfExperience = yearOfExperience;
         this.jobTitle = jobTitle;
         this.description = description;
+        this.status = status;
     }
 
     public RecruitmentRequest(){

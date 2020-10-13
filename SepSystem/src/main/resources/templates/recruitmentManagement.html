@@ -20,7 +20,7 @@
             display:none;
         }
 
-        #createButton{
+        .createButton{
             margin-top: 2px;
             text-decoration: none;
             font-size: 20px;
@@ -44,7 +44,7 @@
             margin: 100px auto;
             width: 1024px;
         }
- 
+
         /* 滚动条宽度 */
         ::-webkit-scrollbar {
             -webkit-appearance: none;
@@ -56,35 +56,35 @@
             background-color: rgba(0, 0, 0, .5);
             -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
         }
- 
+
         /* 滚动条颜色 */
         ::-webkit-scrollbar-thumb {
             background-color: #27314d;
         }
- 
+
         table {
             width: 800px;
             border-spacing: 0px;
             border-collapse: collapse;
         }
- 
+
         table caption{
             font-weight: bold;
             font-size: 24px;
             line-height: 50px;
         }
- 
+
         table th, table td {
             height: 50px;
             text-align: center;
             border: 1px solid gray;
         }
- 
+
         table thead {
             color: white;
             background-color: #7DBCEA;
         }
- 
+
         table tbody {
             display: block;
             width: calc(100%); /*这里的8px是滚动条的宽度*/
@@ -92,26 +92,26 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
- 
+
         table tfoot {
             background-color: #71ea71;
         }
- 
+
         table thead tr, table tbody tr, table tfoot tr {
             box-sizing: border-box;
             table-layout: fixed;
             display: table;
             width: 100%;
         }
- 
+
         table tbody tr:nth-of-type(odd) {
             background: #EEE;
         }
- 
+
         table tbody tr:nth-of-type(even) {
             background: #FFF;
         }
- 
+
         table tbody tr td{
             border-bottom: none;
         }
@@ -121,78 +121,76 @@
 </head>
 
 <body>
-    <header>
-        
-        <div id = "header">
-            <p th:text="${session.userName}"></p>
-           <p th:text="${session.role}"></p>
-         </div>
-          
-    </header>
-    <script>
+<header>
 
-
-
-    </script>
-
-    <div class="content">
-        <div class="sidebar">
-            <ul class="side-menu">
-        
-                <li class="hidden" th:class="${session.event}"><a href="/eventManagement">EventManagement</a></li>
-        
-                <li class="hidden" th:class="${session.task}"><a href="/taskManagement">TaskManagement</a></li>
-        
-                <li class="hidden" th:class="${session.staff}"><a href="/staffManagement">StaffManagement</a></li>
-        
-                <li class="hidden" th:class="${session.finance}"><a href="/financeManagement">FinanceManagement</a></li>
-        
-              </ul>
-
-        </div>
-        <div class="maincontent">
-            <!-- <div style="width:800px;height:100px;overflow-y:scroll;overflow-x:none;background-color: rgba(0,0,0,0.1);"> -->
-                <table cellpadding="0" cellspacing="0">
-
-
-                    <caption id="tablecaption"><a href="/createEvent" th:class="${createView}" id="createButton" >create</a>Event List </caption>
-
-                    <thead>
-                        <tr>
-                            <th>Event ID</th>
-                            <th>Event Type</th>
-                            <th>Event Price</th>
-                            <th>Event Status</th>
-                            <th>Event Details</th>
-                        </tr>
-                    </thead>
-         
-                    <tr th:each="event : ${eventlist}">
-                        <td th:text="${event.id}" name="">null</td>
-                        <td th:text="${event.eventType}">null</td>
-                        <td th:text="${event.expectedBudget}">null</td>
-                        <td th:text="${event.status}">null</td>
-
-
-                        <td>
-                            <form th:action="@{/editEvent}" method="post">
-                                <input name="eventId" type="hidden" th:value="${event.id}">
-                                <button type="submit">More</button>
-                            </form>
-                        </td>
-                    </tr>
-
-
-                    </tbody>
-         
-
-                </table>
-        
-              <!-- </div> -->
-        </div>
+    <div id = "header">
+        <p th:text="${session.userName}"></p>
+        <p th:text="${session.role}"></p>
     </div>
 
-    <footer>FOOTER</footer>
+</header>
+<script>
+
+
+
+</script>
+
+<div class="content">
+    <div class="sidebar">
+        <ul class="side-menu">
+
+            <li class="hidden" th:class="${session.event}"><a href="/eventManagement">EventManagement</a></li>
+
+            <li class="hidden" th:class="${session.task}"><a href="/taskManagement">TaskManagement</a></li>
+
+            <li class="hidden" th:class="${session.staff}"><a href="/staffManagement">StaffManagement</a></li>
+
+            <li class="hidden" th:class="${session.finance}"><a href="/financeManagement">FinanceManagement</a></li>
+
+        </ul>
+
+    </div>
+    <div class="maincontent">
+        <!-- <div style="width:800px;height:100px;overflow-y:scroll;overflow-x:none;background-color: rgba(0,0,0,0.1);"> -->
+        <table cellpadding="0" cellspacing="0">
+
+
+            <caption id="tablecaption"><a href="/createRecruitment" th:class="${createView}">create</a>Recruitment List </caption>
+
+            <thead>
+            <tr>
+                <th>Recruitment Request ID</th>
+                <th>Department</th>
+                <th>Job Title</th>
+                <th>Status</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+
+            <tr th:each="recruitment : ${recruitmentList}">
+                <td th:text="${recruitment.id}" name="">null</td>
+                <td th:text="${recruitment.requestingDept}">null</td>
+                <td th:text="${recruitment.jobTitle}">null</td>
+                <td th:text="${recruitment.status}">null</td>
+                <td>
+                    <form th:action="@{/editRecruitment}" method="post">
+                        <input name="recruitmentId" type="hidden" th:value="${recruitment.id}">
+                        <button type="submit">More</button>
+                    </form>
+                </td>
+            </tr>
+
+
+            </tbody>
+
+
+        </table>
+
+        <!-- </div> -->
+    </div>
+</div>
+
+<footer>FOOTER</footer>
 </body>
 
 </html>
