@@ -6,7 +6,7 @@ import com.sep.system.model.FinancialRequest;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 public interface FinancialRequestRepository extends JpaRepository<FinancialRequest, Integer>{
-   
+    List<FinancialRequest> findByRequestingDept(String requestingDept);
 }
 
 

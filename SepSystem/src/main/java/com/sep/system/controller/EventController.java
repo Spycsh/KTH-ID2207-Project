@@ -69,7 +69,6 @@ public class EventController {
             switch(role){
                 case "senior customer service manager":
                     if(event.getStatus().equals("draft")){
-//                        System.out.println("aaaaaaa");
                         session.setAttribute("budgetCommentView", "disabled");
                         session.setAttribute("choiceView", "choice");
                     }

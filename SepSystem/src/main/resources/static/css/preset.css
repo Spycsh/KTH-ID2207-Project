@@ -2,13 +2,40 @@ body {
   margin: 0;
 }
 
-#header{
+#headercontent{
   width:100%;
-  margin-right:0px;
- text-align: right;
+  text-align:right;
 }
 
-header, footer, .maincontent {
+#logout{
+  margin-top: 30px;
+  float:right;
+  height:84px;
+  width:100px;
+}
+
+
+#header{
+  width:100px;
+  
+  height:84px;
+  float: right;
+}
+
+
+
+#logoutbutton{
+  background-color: rgba(43, 124, 216,0.75);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+header,footer, .maincontent {
   color: #000;
   min-height: 60px;
   text-align: center;

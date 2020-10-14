@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>demo 2</title>
+    <title>SEP system</title>
 
     <link rel="stylesheet" href="../css/preset.css">
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
@@ -122,13 +122,16 @@
 
 <body>
     <header>
-        
+        <div id="headercontent">
+        <div id="logout">
+          <a id="logoutbutton" href="/logout">Logout</a>
+        </div>
         <div id = "header">
-            <p th:text="${session.userName}"></p>
-           <p th:text="${session.role}"></p>
-         </div>
-          
-    </header>
+           <p th:text="${session.userName}"></p>
+          <p th:text="${session.role}"></p>
+        </div>
+      </div>
+      </header>
     <script>
 
 
@@ -191,8 +194,9 @@
               <!-- </div> -->
         </div>
     </div>
-
-    <footer>FOOTER</footer>
+    <footer>
+        <p>SEP system developed by Chen, Sihan & Chen, Zidi</p>
+      </footer>
 </body>
 
 </html>

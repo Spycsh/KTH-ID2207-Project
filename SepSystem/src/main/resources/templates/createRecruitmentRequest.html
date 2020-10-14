@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>demo 2</title>
+    <title>SEP system</title>
 
     <link rel="stylesheet" href="../css/preset.css">
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
@@ -18,6 +18,9 @@
       background-color: rgb(235, 235, 228);
       pointer-events:none;
     }
+    .textArea{
+            vertical-align: middle;
+        }
 
 
     </style>
@@ -25,13 +28,17 @@
 </head>
 
 <body>
-<header>
-
-    <div id = "header">
-        <p th:text="${session.userName}"></p>
-        <p th:text="${session.role}"></p>
-    </div>
-</header>
+    <header>
+        <div id="headercontent">
+        <div id="logout">
+          <a id="logoutbutton" href="/logout">Logout</a>
+        </div>
+        <div id = "header">
+           <p th:text="${session.userName}"></p>
+          <p th:text="${session.role}"></p>
+        </div>
+      </div>
+      </header>
 <script>
 
 
@@ -69,8 +76,8 @@
             <p>Years of Experience: <input name="yearOfExperience" type="text" ></p>
             <p>Job of Title: <input name="jobTitle" type="text" ></p>
             <div id="description">
-                <label>Job Description</label>
-                <textarea rows="10" cols="30" name="description"></textarea>
+                <label class=".textArea">Job Description</label>
+                <textarea rows="10" cols="30" name="description" class = ".textArea"></textarea>
                 <br>
             </div>
 
@@ -84,7 +91,9 @@
     </div>
 </div>
 
-<footer>FOOTER</footer>
+<footer>
+    <p>SEP system developed by Chen, Sihan & Chen, Zidi</p>
+  </footer>
 </body>
 
 </html>

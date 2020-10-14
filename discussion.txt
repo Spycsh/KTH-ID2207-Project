@@ -8,3 +8,5 @@ todo:
 only customer officer can create a event, namely sam
 ok
 
+delete the chinese comments in the program
+

@@ -105,6 +105,13 @@ public class LoginController {
     @RequestMapping("/")
     public String html(){return "index";}
 
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+
+        session.invalidate();
+        return "redirect:/";
+    }
+
     @RequestMapping("/loginFailure")
     public String success(Map<String, Object> map){
         map.put("hello", "The login fails: please check the password");

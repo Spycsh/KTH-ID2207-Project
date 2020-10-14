@@ -18,6 +18,7 @@ import java.util.Map;
 
 import static java.lang.Integer.parseInt;
 
+//controller for recruitment requests
 @Controller
 public class StaffController {
     @Autowired
@@ -98,7 +99,7 @@ public class StaffController {
         return "editRecruitmentRequest";
 
     }
-//
+
     // click the confirm button of task
     @PostMapping(value= "/editRecruitmentRequest")
     public String editTaskRequest(HttpServletRequest request,
