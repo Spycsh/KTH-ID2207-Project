@@ -27,10 +27,16 @@ public class LoginController {
 
     
     @RequestMapping("/mainPage")
-    public String mainPage(){
+    public String mainPage(HttpSession session, HttpServletRequest request){
+        if(session.getAttribute("userId")!=null){
+            System.out.println(session.getAttribute("userId"));
+            return "MainPage";
 
-       
-        return "MainPage";
+        }
+        else{
+            System.out.println("session unbound");
+            return "redirect:/";
+        }
     }
 
     @RequestMapping(value = "/login")
