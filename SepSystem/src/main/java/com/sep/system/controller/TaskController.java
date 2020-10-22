@@ -91,7 +91,7 @@ public class TaskController {
         }else{
             map.put("commentView", "commentView");  // for ordinary team members, they can comment
         }
-        System.out.println(taskId);
+        // System.out.println(taskId);
         Task task = taskRepository.findById(parseInt(taskId)).get(0);
 
         map.put("task", task);

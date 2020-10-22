@@ -106,7 +106,7 @@ public class FinanceController {
         String role = (String) session.getAttribute("role");
         if(role.equals("financial manager")){
             if(status.equals("Draft")){
-                status = "HRCommented";
+                status = "FMCommented";
             }
         }
 

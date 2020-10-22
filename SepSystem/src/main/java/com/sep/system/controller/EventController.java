@@ -46,7 +46,7 @@ public class EventController {
     @PostMapping(value = "/editEvent")
     public String editEvent(HttpServletRequest request ,@RequestParam("eventId") String eventId, Map<String, Object> map){
 
-        System.out.println(eventId);
+        // System.out.println(eventId);
 
         Event event = eventRepository.findById(parseInt(eventId)).get();
 
@@ -107,7 +107,7 @@ public class EventController {
     @PostMapping(value = "/editEventRequest")
     public String editEvent(HttpServletRequest request, @RequestParam("eventId") String eventId, @RequestParam("comment") String comment, @RequestParam("expectedBudget") int expectedBudget,
                             @RequestParam("choice") String choice){
-        System.out.println(eventId);
+        // System.out.println(eventId);
         HttpSession session = request.getSession();
 
         // get current role

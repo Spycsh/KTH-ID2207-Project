@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class FinancialRequest {
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
     private String requestingDept;
@@ -19,29 +19,29 @@ public class FinancialRequest {
 
 
     public FinancialRequest(int id, String requestingDept, int eventId, int amount,
-    String reason, String status, String commentFromFM) {
-this.id = id;
-this.requestingDept = requestingDept;
-this.eventId = eventId;
-this.amount = amount;
-this.reason = reason;
-this.status = status;
-this.commentFromFM = commentFromFM;
-}
+                            String reason, String status, String commentFromFM) {
+        this.id = id;
+        this.requestingDept = requestingDept;
+        this.eventId = eventId;
+        this.amount = amount;
+        this.reason = reason;
+        this.status = status;
+        this.commentFromFM = commentFromFM;
+    }
 
-public FinancialRequest( String requestingDept, int eventId, int amount,
-    String reason, String status) {
+    public FinancialRequest(String requestingDept, int eventId, int amount,
+                            String reason, String status) {
 
-this.requestingDept = requestingDept;
-this.eventId = eventId;
-this.amount = amount;
-this.reason = reason;
-this.status = status;
-}
+        this.requestingDept = requestingDept;
+        this.eventId = eventId;
+        this.amount = amount;
+        this.reason = reason;
+        this.status = status;
+    }
 
-public FinancialRequest(){
+    public FinancialRequest() {
 
-}
+    }
 
 
     public int getId() {

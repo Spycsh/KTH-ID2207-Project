@@ -22,14 +22,14 @@
 <body>
   <header>
     <div id="headercontent">
-    <div id="logout">
-      <a id="logoutbutton" href="/logout">Logout</a>
+      <div id="logout">
+        <a id="logoutbutton" href="/logout">Logout</a>
+      </div>
+      <div id="header">
+        <p th:text="${session.userName}"></p>
+        <p th:text="${session.role}"></p>
+      </div>
     </div>
-    <div id = "header">
-       <p th:text="${session.userName}"></p>
-      <p th:text="${session.role}"></p>
-    </div>
-  </div>
   </header>
   <script>
 
@@ -40,7 +40,7 @@
   <div class="content">
     <div class="sidebar">
       <ul class="side-menu">
-        
+
         <li class="hidden" th:class="${session.event}"><a href="/eventManagement">EventManagement</a></li>
 
         <li class="hidden" th:class="${session.task}"><a href="/taskManagement">TaskManagement</a></li>
@@ -53,18 +53,18 @@
 
     </div>
     <div class="maincontent">
-        <h1>
-          Hello! Welcome to SEP system.
+      <h1>
+        Hello! Welcome to SEP system.
 
-        </h1>
-      
+      </h1>
+
     </div>
   </div>
 
   <footer>
     <p>SEP system developed by Chen, Sihan & Chen, Zidi</p>
-    
-   
+
+
   </footer>
 </body>
 
