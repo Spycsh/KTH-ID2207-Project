@@ -26,6 +26,7 @@ public class StaffController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    //direct to the staff management page and check the role
     @RequestMapping("/staffManagement")
     public String staffManagement(HttpServletRequest request, Map<String, Object> map){
         HttpSession session = request.getSession();
@@ -53,6 +54,7 @@ public class StaffController {
         return "recruitmentManagement";
     }
 
+    //direct to the create recruitment request page
     @RequestMapping("/createRecruitment")
     public String createRecruitmentPage(HttpServletRequest request,Map<String, Object> map){
         HttpSession session = request.getSession();
@@ -63,7 +65,7 @@ public class StaffController {
         return "createRecruitmentRequest";        // go to createRecruitmentRequest.html
     }
 
-
+    //get the value from the recruitment request page
     @PostMapping(value = "/createRecruitmentRequest")
     public String createRecruitmentRequest( @RequestParam("contractType") String contractType,
                                @RequestParam("requestingDept") String requestingDept,
@@ -80,6 +82,7 @@ public class StaffController {
 
     }
 
+    //direct to the edit recruitment page accroding to the role
     @PostMapping(value = "/editRecruitment")
     public String editTask(HttpServletRequest request, @RequestParam("recruitmentId") String recruitmentId, Map<String, Object> map){
         HttpSession session = request.getSession();
@@ -100,7 +103,7 @@ public class StaffController {
 
     }
 
-    // click the confirm button of task
+    // click the confirm button of edit recruitment request
     @PostMapping(value= "/editRecruitmentRequest")
     public String editTaskRequest(HttpServletRequest request,
                                   @RequestParam("status") String status,
@@ -128,7 +131,7 @@ public class StaffController {
 
     }
 
-    //for insert a few data into the database
+    //for inserting a few test data into the database
     @RequestMapping(value = "/insertTestRecruitment")
     public String insertTestRecruitment(){
         List<RecruitmentRequest> recruitmentList = new ArrayList<RecruitmentRequest>();

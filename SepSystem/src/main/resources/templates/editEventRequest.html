@@ -77,7 +77,7 @@
         </div>
 
         <p>Status: <input name="status" class="disabled" type="text" placeholder="draft" th:value="${event.status}"></p>
-        <p>Expected budget: <input name="expectedBudget" class="disabled" type="number" placeholder="budget" th:value="${event.expectedBudget}"></p>
+        <p>Expected budget(SEK): <input name="expectedBudget" class="disabled" type="number" placeholder="budget" th:value="${event.expectedBudget}"></p>
 
         <p>Comment: <input name="comment" class="disabled" th:class="${session.budgetCommentView}" type="text" placeholder="comment" th:value="${event.comment}"></p>
 

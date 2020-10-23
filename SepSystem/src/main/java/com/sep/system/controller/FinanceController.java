@@ -20,6 +20,7 @@ public class FinanceController {
     @Autowired
     private FinancialRequestRepository financialRequestRepository;
 
+    //check role and direct to the finance management page
     @RequestMapping("/financeManagement")
     public String financeManagement(HttpServletRequest request, Map<String, Object> map){
         HttpSession session = request.getSession();
@@ -73,6 +74,7 @@ public class FinanceController {
 
     }
 
+    //direct to the edit financial request page
     @PostMapping(value = "/editFinance")
     public String editTask(HttpServletRequest request, @RequestParam("financialRequestId") int financialRequestId, Map<String, Object> map){
         HttpSession session = request.getSession();
@@ -93,7 +95,7 @@ public class FinanceController {
 
     }
 
-    // click the confirm button of task
+    // click the confirm button of edit financial request
     @PostMapping(value= "/editFinancialRequest")
     public String editTaskRequest(HttpServletRequest request,
                                   @RequestParam("status") String status,

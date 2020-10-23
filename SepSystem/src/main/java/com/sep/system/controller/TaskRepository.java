@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.sep.system.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+//for connecting to the database
 public interface TaskRepository extends JpaRepository<Task, Integer>{
     public List<Task> findByDepartment(String department);
     public List<Task> findById(int id);

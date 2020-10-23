@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.sep.system.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+//for connection to the database
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
     public List<Employee> findByName(String name);
     public List<Employee> findByDepartment(String department);

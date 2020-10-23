@@ -23,6 +23,7 @@ public class EmployeeTest {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    //test to create an employee
     @Test
     public void createEmployeeTest(){
         employee = new Employee("testEmployee", "admin manager", "mike", "admin");
@@ -31,19 +32,22 @@ public class EmployeeTest {
         Assert.assertEquals(e.getRole(), "admin manager");
         Assert.assertEquals(e.getDepartment(), "admin");
         Assert.assertEquals(e.getPassword(), "mike");
+        employeeRepository.deleteById(e.getId());
 
     }
 
 
-    @Test
-    public void deleteEmployeeTest(){
-        List<Employee> employees = employeeRepository.findByName("testEmployee");
-        if(employees.size()>0) {
-            Employee e = employees.get(0);
-            employeeRepository.deleteById(e.getId());
-        }
-        Assert.assertEquals(0, employeeRepository.findByName("testEmployee").size());
-    }
+    //this method is not used in the system
+    //just for clearing the data which was created in the test
+    // @Test
+    // public void deleteEmployeeTest(){
+    //     List<Employee> employees = employeeRepository.findByName("testEmployee");
+    //     if(employees.size()>0) {
+    //         Employee e = employees.get(0);
+    //         employeeRepository.deleteById(e.getId());
+    //     }
+    //     Assert.assertEquals(0, employeeRepository.findByName("testEmployee").size());
+    // }
 }
 
 

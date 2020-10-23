@@ -24,7 +24,7 @@ public class TaskTest {
 //        int eventId, int employeeId, String subject,
 //                String description, int sender, String department, String priority, String status,String employeeName
         task = new Task(2, 333, "take photos", "in front of the palace",
-                777, "testapartment", "high", "Draft","testEmployee");
+                777, 1000, "testapartment", "high", "Draft","testEmployee");
         taskRepository.save(task);
         Task e = taskRepository.findByEmployeeId(333).get(0);
         Assert.assertEquals(e.getEventId(), 2);

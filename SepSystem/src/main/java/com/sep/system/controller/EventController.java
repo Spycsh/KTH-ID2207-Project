@@ -18,12 +18,13 @@ import javax.servlet.http.HttpSession;
 
 import static java.lang.Integer.parseInt;
 
-
+//event controller class
 @Controller
 public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
+    //check the role of user and direct to the event management page
     @RequestMapping("/eventManagement")
     public String eventManagement(HttpServletRequest request, Map<String, Object> map) {
         List<Event> eventList = eventRepository.findAll();
@@ -43,6 +44,8 @@ public class EventController {
     }
 
 
+    //direct to the edit event page and check the role of user
+    //different roles have different actions
     @PostMapping(value = "/editEvent")
     public String editEvent(HttpServletRequest request ,@RequestParam("eventId") String eventId, Map<String, Object> map){
 
@@ -99,11 +102,13 @@ public class EventController {
 
     }
 
+    //direct to the create event page
     @RequestMapping("/createEvent")
     public String createEventPage(){
         return "createEventRequest";        // go to createEventRequest.html
     }
 
+    //get values from the edit event page
     @PostMapping(value = "/editEventRequest")
     public String editEvent(HttpServletRequest request, @RequestParam("eventId") String eventId, @RequestParam("comment") String comment, @RequestParam("expectedBudget") int expectedBudget,
                             @RequestParam("choice") String choice){
@@ -114,7 +119,42 @@ public class EventController {
         String role = (String) session.getAttribute("role");
         // get the event currently dealt with
         Event event = eventRepository.findById(parseInt(eventId)).get();
+        updateEventInDB(choice,role,event,comment);
 
+        return "redirect:/eventManagement";
+
+
+    }
+
+
+
+
+    //get value from the create event page
+    @PostMapping(value = "/createEventRequest")
+    public String createEvent(@RequestParam("clientName") String clientName, @RequestParam("eventType") String eventType,
+                              @RequestParam("beginDate") String beginDate, @RequestParam("endDate") String endDate,
+                              @RequestParam("preferences") String preferences, @RequestParam("expectedBudget") int expectedBudget,
+                              @RequestParam("description") String description,
+                              Map<String, Object> map) {
+        
+                               
+        Event event = new Event(clientName, eventType, beginDate, endDate, preferences, expectedBudget, description);
+        addEventInDB(event);
+        
+
+        return "redirect:/eventManagement";     // must use redirect here
+
+    }
+    
+    //add event in the database
+    public boolean addEventInDB(Event event){
+        eventRepository.save(event);
+        return true;
+    }
+
+
+    //update event in the database
+    public boolean updateEventInDB(String choice, String role, Event event, String comment){
         if(choice.equals("reject")){
             event.setStatus("Closed");
         }else{
@@ -136,47 +176,12 @@ public class EventController {
                 case "financial manager":
                     event.setComment(comment);
                     event.setStatus("FMcommented");
-//                    event.setExpectedBudget(expectedBudget);
-
-                    break;
+                break;
 
 
             }
         }
-
-        eventRepository.save(event);
-
-        return "redirect:/eventManagement";
-
-
+        return true;
     }
-
-
-    @PostMapping(value = "/createEventRequest")
-    public String createEvent(@RequestParam("clientName") String clientName, @RequestParam("eventType") String eventType,
-                              @RequestParam("beginDate") String beginDate, @RequestParam("endDate") String endDate,
-                              @RequestParam("preferences") String preferences, @RequestParam("expectedBudget") int expectedBudget,
-                              @RequestParam("description") String description,
-                              Map<String, Object> map) {
-
-        Event event = new Event(clientName, eventType, beginDate, endDate, preferences, expectedBudget, description);
-
-        eventRepository.save(event);
-
-        return "redirect:/eventManagement";     // must use redirect here
-
-    }
-
-
-
-    //  @RequestMapping("/insertEventData")
-    //   public String addTestEvent() {
-    //   Event event = new Event();
-    //   event.setClientId(1);
-    //   event.setExpectedBudget(666);
-    //   event.setStatus("new");
-    //   eventRepository.save(event);
-    //   return "insertSuccess";
-    // }
 
 }

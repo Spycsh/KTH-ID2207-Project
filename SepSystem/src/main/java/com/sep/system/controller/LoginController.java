@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+//for login and logout action
 //@Controller return a html page
 //@RestController return a string
 @Controller
@@ -24,12 +25,12 @@ public class LoginController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-
+    //direct to the main page(from login page)
     @RequestMapping("/mainPage")
     public String mainPage(HttpSession session, HttpServletRequest request) {
         if (session.getAttribute("userId") != null) {
             // System.out.println(session.getAttribute("userId"));
-            return "MainPage";
+            return "mainPage";
 
         } else {
             // System.out.println("session unbound");
@@ -47,7 +48,8 @@ public class LoginController {
 
         // event management is only visible to customer service officer/ senior customer service manager/
         // financial manager/ admin manager
-        if (em.get(0).getRole().equals("financial manager") | em.get(0).getRole().equals("admin manager")
+        if (em.get(0).getRole().equals("financial manager") 
+                | em.get(0).getRole().equals("admin manager")
                 | em.get(0).getRole().equals("senior customer service manager")
                 | em.get(0).getRole().equals("customer service officer")) {
             session.setAttribute("event", "event");
@@ -57,7 +59,8 @@ public class LoginController {
         }
 
         // task management is only visible to production and service department managers and staff
-        if (em.get(0).getDepartment().equals("production") | em.get(0).getDepartment().equals("service")) {
+        if (em.get(0).getDepartment().equals("production") 
+                | em.get(0).getDepartment().equals("service")) {
 
             session.setAttribute("task", "task");
 
@@ -66,7 +69,8 @@ public class LoginController {
         }
 
         // staff management is only visible to HR manager/ production manager/ service manager
-        if (em.get(0).getRole().equals("HR manager") | em.get(0).getRole().equals("production manager")
+        if (em.get(0).getRole().equals("HR manager") 
+                | em.get(0).getRole().equals("production manager")
                 | em.get(0).getRole().equals("service manager")) {
 
             session.setAttribute("staff", "staff");
@@ -85,6 +89,7 @@ public class LoginController {
         }
     }
 
+    //get the login param after user submits the login page
     @RequestMapping(value = "/login")
     public String login(HttpServletRequest request, HttpSession session, Model model) {
         String userName = request.getParameter("userName");
@@ -107,11 +112,13 @@ public class LoginController {
     }
 
 
+    //direct to the login page
     @RequestMapping("/")
     public String html() {
         return "index";
     }
 
+    //direct to the login page when logging out
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
 
@@ -119,6 +126,7 @@ public class LoginController {
         return "redirect:/";
     }
 
+    //direct to the login failure page
     @RequestMapping("/loginFailure")
     public String success(Map<String, Object> map) {
         map.put("hello", "The login fails: please check the password");
@@ -157,14 +165,5 @@ public class LoginController {
 
 }
 
-//    @Value("${name}")
-//    private String name;
-//
-//    @Value("${age}")
-//    private Integer age;
-//
-//    @RequestMapping("/hello")
-//    public String hello(){
-//        return name + " " + age;
-//    }
+
 

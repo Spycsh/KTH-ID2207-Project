@@ -1,5 +1,6 @@
 package com.sep.system.models;
 
+import com.sep.system.controller.EventController;
 import com.sep.system.controller.EventRepository;
 import com.sep.system.model.Event;
 import org.junit.Assert;
@@ -16,11 +17,17 @@ public class EventTest {
     @Autowired
     private EventRepository eventRepository;
 
+
+    EventController eventController = new EventController();
+
+    //test for creating an event
     @Test
     public void createEventTest(){
         event = new Event("testclient", "party", "2020-10-22", "2020-10-23",
                 "non-smoke", 10000, "Please organize it as soon as possible");
-        eventRepository.save(event);
+      
+        eventController.addEventInDB(event);
+
         Event e = eventRepository.findByClientName("testclient").get(0);
         Assert.assertEquals(e.getClientName(), "testclient");
         Assert.assertEquals(e.getEventType(), "party");
@@ -31,22 +38,27 @@ public class EventTest {
         Assert.assertEquals(e.getDescription(), "Please organize it as soon as possible");
     }
 
+    //test for editing an event
     @Test
     public void editEventTest(){
         Event e = eventRepository.findByClientName("testclient").get(0);
-        e.setStatus("SCSapproved");
-        e.setExpectedBudget(12000);
-        Assert.assertEquals(12000, e.getExpectedBudget());
-        Assert.assertEquals("SCSapproved", e.getStatus());
+        eventController.updateEventInDB("approve", "senior customer service manager", e, null);
+
+        Event updatedEvent = eventRepository.findByClientName("testclient").get(0);
+        Assert.assertEquals("SCSapproved", updatedEvent.getStatus());
+        
+        
+        
+        eventRepository.deleteById(updatedEvent.getId());
     }
 
-    @Test
-    public void deleteEventTest(){
-        List<Event> events = eventRepository.findByClientName("testEvent");
-        if(events.size()>0) {
-            Event e = events.get(0);
-            eventRepository.deleteById(e.getId());
-        }
-        Assert.assertEquals(0, eventRepository.findByClientName("testEvent").size());
-    }
+    // @Test
+    // public void deleteEventTest(){
+    //     List<Event> events = eventRepository.findByClientName("testEvent");
+    //     if(events.size()>0) {
+    //         Event e = events.get(0);
+    //         eventRepository.deleteById(e.getId());
+    //     }
+    //     Assert.assertEquals(0, eventRepository.findByClientName("testEvent").size());
+    // }
 }

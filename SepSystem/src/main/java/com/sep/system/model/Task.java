@@ -17,6 +17,7 @@ private String employeeName;
 private String subject;
 private String description;
 private int senderId;
+private int budget;
 private String department;
 private String priority;
 private String plan;
@@ -30,7 +31,7 @@ public Task(){
 
 public Task(int id, int eventId, int employeeId,String employeeName, String subject, 
 String description, int sender, String department, String priority, 
-String status,String plan,String comment) {
+String status,String plan,String comment,int budget) {
     this.id = id;
     this.eventId = eventId;
     this.employeeId = employeeId;
@@ -43,10 +44,11 @@ String status,String plan,String comment) {
     this.status = status;
     this.plan = plan;
     this.comment = comment;
+    this.budget = budget;
 }
 
 public Task(int eventId, int employeeId, String subject, 
-String description, int sender, String department, String priority, String status,String employeeName) {
+String description, int sender, int budget, String department, String priority, String status,String employeeName) {
     this.eventId = eventId;
     this.employeeId = employeeId;
     this.department = department;
@@ -56,6 +58,8 @@ String description, int sender, String department, String priority, String statu
     this.priority = priority;
     this.status = status;
     this.employeeName  = employeeName;
+    this.budget = budget;
+    
 }
 
 public int getId() {
@@ -152,6 +156,14 @@ public String getEmployeeName() {
 
 public void setEmployeeName(String employeeName) {
     this.employeeName = employeeName;
+}
+
+public int getBudget() {
+    return budget;
+}
+
+public void setBudget(int budget) {
+    this.budget = budget;
 }
 
 
