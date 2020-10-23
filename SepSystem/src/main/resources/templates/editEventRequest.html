@@ -83,7 +83,7 @@
 
         <div class="disabled" th:class="${session.choiceView}">
           <p>Please approve or reject:</p>
-          <input type="radio" id="approve" name="choice" checked value="approve">
+          <input type="radio" id="approve" name="choice" checked=false value="approve">
           <label for="approve">approve</label>
           <input type="radio" id="reject" name="choice" value="reject">
           <!--        if the role equals to financial manager, then replace the disabled with undisabled-->

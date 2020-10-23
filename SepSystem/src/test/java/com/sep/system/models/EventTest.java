@@ -1,6 +1,5 @@
 package com.sep.system.models;
 
-import com.sep.system.controller.EventController;
 import com.sep.system.controller.EventRepository;
 import com.sep.system.model.Event;
 import org.junit.Assert;
@@ -8,25 +7,24 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
 
 @SpringBootTest
 public class EventTest {
-    Event event;
+
 
     @Autowired
     private EventRepository eventRepository;
 
 
-    EventController eventController = new EventController();
+
 
     //test for creating an event
     @Test
     public void createEventTest(){
-        event = new Event("testclient", "party", "2020-10-22", "2020-10-23",
+        Event event = new Event("testclient", "party", "2020-10-22", "2020-10-23",
                 "non-smoke", 10000, "Please organize it as soon as possible");
-      
-        eventController.addEventInDB(event);
+
+        eventRepository.save(event);
 
         Event e = eventRepository.findByClientName("testclient").get(0);
         Assert.assertEquals(e.getClientName(), "testclient");
@@ -42,13 +40,14 @@ public class EventTest {
     @Test
     public void editEventTest(){
         Event e = eventRepository.findByClientName("testclient").get(0);
-        eventController.updateEventInDB("approve", "senior customer service manager", e, null);
+        e.setStatus("SCSapproved");
+        eventRepository.save(e);
 
         Event updatedEvent = eventRepository.findByClientName("testclient").get(0);
         Assert.assertEquals("SCSapproved", updatedEvent.getStatus());
-        
-        
-        
+
+
+
         eventRepository.deleteById(updatedEvent.getId());
     }
 

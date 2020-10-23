@@ -1,15 +1,11 @@
 package com.sep.system.models;
 
-import com.sep.system.controller.FinancialRequestRepository;
 import com.sep.system.controller.TaskRepository;
-import com.sep.system.model.FinancialRequest;
 import com.sep.system.model.Task;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 
 @SpringBootTest
@@ -19,6 +15,7 @@ public class TaskTest {
     @Autowired
     private TaskRepository taskRepository;
 
+    //test for creating a task
     @Test
     public void createTaskTest(){
 //        int eventId, int employeeId, String subject,
@@ -37,20 +34,25 @@ public class TaskTest {
         Assert.assertEquals(e.getEmployeeName(), "testEmployee");
     }
 
+    //test for editing the task
     @Test
     public void editTaskTest(){
         Task e = taskRepository.findByEmployeeId(333).get(0);
         e.setStatus("Edited");
-        Assert.assertEquals("Edited", e.getStatus());
+        taskRepository.save(e);
+
+        Task updatedTask = taskRepository.findByEmployeeId(333).get(0);
+        Assert.assertEquals("Edited", updatedTask.getStatus());
+        taskRepository.deleteById(updatedTask.getId());
     }
 
-    @Test
-    public void deleteTaskTest(){
-        List<Task> ta = taskRepository.findByEmployeeId(777);
-        if(ta.size()>0) {
-            Task t = ta.get(0);
-            taskRepository.deleteById(t.getId());
-        }
-        Assert.assertEquals(0, taskRepository.findByEmployeeId(777).size());
-    }
+//    @Test
+//    public void deleteTaskTest(){
+//        List<Task> ta = taskRepository.findByEmployeeId(777);
+//        if(ta.size()>0) {
+//            Task t = ta.get(0);
+//            taskRepository.deleteById(t.getId());
+//        }
+//        Assert.assertEquals(0, taskRepository.findByEmployeeId(777).size());
+//    }
 }

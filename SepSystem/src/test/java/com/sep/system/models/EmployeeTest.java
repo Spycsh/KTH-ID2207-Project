@@ -2,19 +2,11 @@ package com.sep.system.models;
 
 import com.sep.system.controller.EmployeeRepository;
 import com.sep.system.model.Employee;
-import com.sep.system.model.Event;
-import org.aspectj.lang.annotation.Before;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.Modifying;
-
-import javax.transaction.Transactional;
-
-import java.util.List;
-
-import static org.hamcrest.Matchers.is;
 
 
 @SpringBootTest

@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
 
 
 @SpringBootTest
@@ -17,6 +16,7 @@ public class RecruitmentRequestTest {
     @Autowired
     private RecruitmentRequestRepository recruitmentRequestRepository;
 
+    //test for creating a new recruitment request
     @Test
     public void createRecruitmentRequestTest(){
 //        String requestingDept, String contractType, String yearOfExperience, String jobTitle,
@@ -36,22 +36,29 @@ public class RecruitmentRequestTest {
         Assert.assertEquals(e.getYearOfExperience(), "at least 2");
     }
 
+
+    //test for editing the recruitment request
     @Test
     public void editRecruitmentRequestTest(){
         RecruitmentRequest e = recruitmentRequestRepository.findByRequestingDept("testapartment").get(0);
         e.setStatus("HRCommented");
         e.setCommentFromHR("OKay.");
-        Assert.assertEquals("HRCommented", e.getStatus());
-        Assert.assertEquals("OKay.", e.getCommentFromHR());
+        recruitmentRequestRepository.save(e);
+
+        RecruitmentRequest updatedReq = recruitmentRequestRepository.findByRequestingDept("testapartment").get(0);
+        Assert.assertEquals("HRCommented", updatedReq.getStatus());
+        Assert.assertEquals("OKay.", updatedReq.getCommentFromHR());
+
+        recruitmentRequestRepository.deleteById(updatedReq.getId());
     }
 
-    @Test
-    public void deleteRecruitmentRequestTest(){
-        List<RecruitmentRequest> rr = recruitmentRequestRepository.findByRequestingDept("testapartment");
-        if(rr.size()>0) {
-            RecruitmentRequest r = rr.get(0);
-            recruitmentRequestRepository.deleteById(r.getId());
-        }
-        Assert.assertEquals(0, recruitmentRequestRepository.findByRequestingDept("testapartment").size());
-    }
+//    @Test
+//    public void deleteRecruitmentRequestTest(){
+//        List<RecruitmentRequest> rr = recruitmentRequestRepository.findByRequestingDept("testapartment");
+//        if(rr.size()>0) {
+//            RecruitmentRequest r = rr.get(0);
+//            recruitmentRequestRepository.deleteById(r.getId());
+//        }
+//        Assert.assertEquals(0, recruitmentRequestRepository.findByRequestingDept("testapartment").size());
+//    }
 }
